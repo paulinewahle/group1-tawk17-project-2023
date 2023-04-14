@@ -45,10 +45,6 @@ if (isset($_POST["submit"])) {
     <?php echo "<h1>" . $weather["weather"][0]["description"] . "</h1>"; ?>
         </div>
         <br>
-        <div class="humidity">
-    <?php echo "<h1>" . $weather["humidity"] . "</h1>"; ?>
-        </div>
-        <br>
         <div class="temperature">
     <?php echo "<h1>" . $celcius . "°C" . "</h1>"; ?>
         </div>

@@ -1,11 +1,40 @@
 <?php
+    $weather = "";
+    $error = "";
+     
+    if ($_GET['city']) {
+         
+     $urlContents = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".urlencode($_GET['city']).",uk&appid=4b6cbadba309b7554491c5dc66401886");
+         
+        $weatherArray = json_decode($urlContents, true);
+         
+        if ($weatherArray['cod'] == 200) {
+         
+            $weather = "The weather in ".$_GET['city']." is currently '".$weatherArray['weather'][0]['description']."'. ";
+ 
+            $tempInCelcius = intval($weatherArray['main']['temp'] - 273);
+ 
+            $weather .= " Temperature: ".$tempInCelcius."&deg;C"."Wind speed".$weatherArray['wind']['speed']."m/s.";
+             
+        } else {
+             
+            $error = "Could not find city - please try again.";
+             
+        }
+         
+    }
+ 
+ 
+?>
+
+<?php
 
 // Check for a defined constant or specific file inclusion
 if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die('This file cannot be accessed directly.');
 }
 
-require_once __DIR__ . "/UsersAPI.php";
+require_once __DIR__ . "/CustomersAPI.php";
 
 // Class for routing all our API requests
 
@@ -17,7 +46,7 @@ class APIRouter{
     public function __construct($path_parts, $query_params)
     {
         $this->routes = [
-            "users" => "UsersAPI"
+            "customers" => "CustomersAPI"
         ];
 
         $this->path_parts = $path_parts;
@@ -26,7 +55,7 @@ class APIRouter{
 
     public function handleRequest(){
 
-        // Get the requested resource from the URL such as "Users" or "Products"
+        // Get the requested resource from the URL such as "Customers" or "Products"
         $resource = strtolower($this->path_parts[1]);
 
         // Cet the class specified in the routes
