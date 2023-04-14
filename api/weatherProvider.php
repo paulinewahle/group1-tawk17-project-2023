@@ -20,4 +20,12 @@
 // My API key
  $apiKey="https://www.visualcrossing.com/resources/documentation/weather-api/how-do-i-add-weather-forecast-to-my-webpage/";
 
+ /* to toggle the api key for logged in users to get more forecast days: 
+
+  if(user->logedIn){
+    $apiKey="new key"
+  }
+  else{
+     $apiKey="old key"
+  }
  ?>
