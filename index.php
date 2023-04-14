@@ -15,6 +15,7 @@ if (isset($_POST["submit"])) {
         //print_r($weather);
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -38,19 +39,16 @@ if (isset($_POST["submit"])) {
     <div class="weather-container">
         
         <div class="location">
-    <?php echo "<h1>" . $city["city"] . "</h1>"; ?>
+        <h2> <?= $city ?></h2>
         </div>
         <br>
         <div class="weatherdescription">
-    <?php echo "<h1>" . $weather["weather"][0]["description"] . "</h1>"; ?>
+        <h2> <?= $weather["weather"][0]["description"] ?></h2>
         </div>
         <br>
         <div class="temperature">
-    <?php echo "<h1>" . $celcius . "°C" . "</h1>"; ?>
+        <h2> <?= $celcius?> °C </h2>
         </div>
-
-  
-       
         <div class="weather-icon">
             <img src="weatherIcons/day/176.png" alt="Weather Icon">
         </div>
