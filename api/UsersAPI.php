@@ -17,7 +17,6 @@ class UsersAPI extends RestAPI
     public function handleRequest()
     {
 
-        
         // If theres two parts in the path and the request method is GET 
         // it means that the client is requesting "api/Users" and
         // we should respond by returning a list of all users 
@@ -87,8 +86,8 @@ class UsersAPI extends RestAPI
     {
         $user = new UserModel();
 
-        $user->first_name = $this->body["first_name"];
-        $user->last_name = $this->body["last_name"];
+        $user->username = $this->body["username"];
+        $user->password = $this->body["password"];
 
         $success = UsersService::saveUser($user);
 
@@ -106,8 +105,8 @@ class UsersAPI extends RestAPI
     {
         $user = new UserModel();
 
-        $user->user_name = $this->body["user_name"];
-        $user->birth_year = $this->body["birth_year"];
+        $user->username = $this->body["username"];
+        $user->password = $this->body["password"];
 
         $success = UsersService::updateUserById($id, $user);
 
