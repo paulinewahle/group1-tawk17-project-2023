@@ -3,6 +3,7 @@
 if ($user->isPremium()) {
     if (isset($_POST["submit"])) {
         if (empty($_POST["city"])) {
+            $city = isset($_POST['city']) ? $_POST['city'] : $user->city; //Take User City
             echo "Enter your City";
         }else{
             $city = $_POST["city"];
