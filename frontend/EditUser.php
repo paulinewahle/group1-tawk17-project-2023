@@ -10,8 +10,10 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 class UserModel
 {
   public $user_id;
-  public $first_name;
-  public $last_name;
+  public $username;
+  public $password;
+  public $location;
+  public $premium;
 }
 ?>
 
@@ -28,7 +30,7 @@ class UserModel
 <body>
   <!-- Edit Profile Information -->
   <h1>Edit Profile</h1>
-  <form action="process-edit-profile.php" method="POST">
+  <form action="EditUSer.php" method="POST">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required><br><br>
     <label for="password">Password:</label>
@@ -39,14 +41,30 @@ class UserModel
     <input type="checkbox" id="premium" name="premium"><br><br>
     <input type="submit" value="Save Changes">
   </form>
-  <!-- Redirect back to Weather Page -->
+
+
+
+  <!-- Update User and Redirect back to Weather Page -->
   <?php
-  if (isset($_POST['submit'])) {
-    // process form data here
-    header("Location: WeatherPage.php");
-    exit();
+  require_once __DIR__."/database.php";
+  //Get post data
+  $id = $_POST["id"];
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+  $location = $_POST["location"];
+  $premium = $_POST["premium"];
+  //Send post data to DB
+  $query = "UPDATE users SET username = ?, password = ?, location = ?, premium = ?, WHERE id = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param("ssi", $username, $password, $location, $premium);
+  $success = $stmt->execute();
+
+  if($success){
+    header("location: WeatherPage.php");
+
+  }else{
+    echo "Error";
   }
   ?>
 </body>
-
 </html>
