@@ -205,7 +205,7 @@ input[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
-/*Edit User */
+/*Edit User Formular */
 form {
     margin: 0 auto;
     width: 400px;
@@ -239,5 +239,20 @@ form {
   }
   
   input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Edit User Button */
+  .edit-user-btn {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .edit-user-btn:hover {
     background-color: #3e8e41;
   }

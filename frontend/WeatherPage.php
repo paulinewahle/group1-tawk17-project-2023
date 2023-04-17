@@ -2,7 +2,7 @@
 require_once __DIR__."/WeatherAPI.php";
 require_once __DIR__."/WeatherPage.php";
 
-//
+
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +19,7 @@ require_once __DIR__."/WeatherPage.php";
     <section>
     <form method="post">
     <h1>Weather App</h1>
+    <button class="edit-user-btn">Edit User</button>
     <input type = "text" name = "city" id = "">
     <input name = "submit" type = "submit" value = "Check Weather">
 

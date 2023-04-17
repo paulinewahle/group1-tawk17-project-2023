@@ -22,7 +22,7 @@ class UsersAPI extends RestAPI
         // we should respond by returning a list of all users 
         if ($this->method == "GET" && $this->path_count == 2) {
             $this->getAll();
-        } 
+        }
 
         // If there's three parts in the path and the request method is GET
         // it means that the client is requesting "api/Users/{something}".
@@ -44,15 +44,15 @@ class UsersAPI extends RestAPI
         // should get the contents of the body and update the user.
         else if ($this->path_count == 3 && $this->method == "PUT") {
             $this->putOne($this->path_parts[2]);
-        } 
+        }
 
         // If theres two parts in the path and the request method is DELETE 
         // it means that the client is requesting "api/Users/{something}" and we
         // should get the ID from the URL and delete that user.
         else if ($this->path_count == 3 && $this->method == "DELETE") {
             $this->deleteOne($this->path_parts[2]);
-        } 
-        
+        }
+
         // If none of our ifs are true, we should respond with "not found"
         else {
             $this->notFound();
@@ -74,8 +74,7 @@ class UsersAPI extends RestAPI
 
         if ($user) {
             $this->sendJson($user);
-        }
-        else {
+        } else {
             $this->notFound();
         }
     }
@@ -93,10 +92,9 @@ class UsersAPI extends RestAPI
 
         $success = UsersService::saveUser($user);
 
-        if($success){
+        if ($success) {
             $this->created();
-        }
-        else{
+        } else {
             $this->error();
         }
     }
@@ -114,10 +112,9 @@ class UsersAPI extends RestAPI
 
         $success = UsersService::updateUserById($id, $user);
 
-        if($success){
+        if ($success) {
             $this->ok();
-        }
-        else{
+        } else {
             $this->error();
         }
     }
@@ -127,16 +124,15 @@ class UsersAPI extends RestAPI
     {
         $user = UsersService::getUserById($id);
 
-        if($user == null){
+        if ($user == null) {
             $this->notFound();
         }
 
         $success = UsersService::deleteUserById($id);
 
-        if($success){
+        if ($success) {
             $this->noContent();
-        }
-        else{
+        } else {
             $this->error();
         }
     }

@@ -13,6 +13,7 @@ require_once __DIR__."/WeatherPage.php";
     <title>Log In</title>
 </head>
   <body>
+    <!-- User Log In Field -->
     <h1>Login</h1>
     <form action="process-login.php" method="POST">
       <label for="username">Username:</label>
@@ -21,5 +22,13 @@ require_once __DIR__."/WeatherPage.php";
       <input type="password" id="password" name="password" required><br><br>
       <input type="submit" value="Login">
     </form>
+    <!-- Redirect to WeatherPage -->
+    <?php
+  if (isset($_POST['submit'])) {
+    // process form data here
+    header("Location: WeatherPage.php");
+    exit();
+  }
+  ?>
   </body>
 </html>
