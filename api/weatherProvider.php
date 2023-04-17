@@ -20,12 +20,20 @@
 // My API key
  $apiKey="https://www.visualcrossing.com/resources/documentation/weather-api/how-do-i-add-weather-forecast-to-my-webpage/";
 
- /* to toggle the api key for logged in users to get more forecast days: 
+//Implement API  OpenWeatherMap
+if (isset($_POST["submit"])) {
+    if (empty($_POST["city"])) {
+        echo "Enter your City";
+    }else{
+        $city = $_POST["city"];
+        $api_key = "a74c60a34f798eefa00278309f5c1b24";
+        $api = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$api_key";
+        $api_data = file_get_contents($api);
+        //print_r($api_data);
 
-  if(user->logedIn){
-    $apiKey="new key"
-  }
-  else{
-     $apiKey="old key"
-  }
- ?>
+        $weather = json_decode($api_data, true);
+        $celcius = $weather["main"]["temp"] - 273;
+        //print_r($weather);
+    }
+}
+?>
