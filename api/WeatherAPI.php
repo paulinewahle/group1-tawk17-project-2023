@@ -3,6 +3,14 @@ require_once __DIR__ . "/RestAPI.php";
 require_once __DIR__ . "/UsersAPI.php";
 require_once __DIR__ . "/APIRouter.php";
 
+//prepare and bind
+$stmt = $conn->prepare("SELECT * FROM users WHERE id=?");
+$stmt ->bind_param("i", $_GET["id"]);
+$stmt -> execute();
+$result = $stmt-> get_result();
+$users = $result->fetch_assoc();
+
+
 //Premium User Get Weather Data
 if ($user->isPremium()) {
     if (isset($_POST["submit"])) {
