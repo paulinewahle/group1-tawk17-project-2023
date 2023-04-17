@@ -1,3 +1,5 @@
+<?php
+
 // Check for a defined constant or specific file inclusion
 if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die('This file cannot be accessed directly.');
@@ -6,7 +8,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 // Use "require_once" to load the files needed for the class
 
 require_once __DIR__ . "/Database.php";
-//require_once __DIR__ . "/../models/UserModel.php";
+require_once __DIR__ . "/../models/UserModel.php";
 
 class UsersDatabase extends Database
 {
@@ -45,7 +47,7 @@ class UsersDatabase extends Database
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("si", $user->username, $user->username);
+        $stmt->bind_param("ss", $user->username, $user->password);
 
         $success = $stmt->execute();
 
@@ -59,7 +61,7 @@ class UsersDatabase extends Database
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("sii", $user->username, $user->password, $user_id);
+        $stmt->bind_param("ssi", $user->username, $user->password, $user_id);
 
         $success = $stmt->execute();
 

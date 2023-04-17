@@ -1,3 +1,5 @@
+<?php
+
 // Check for a defined constant or specific file inclusion
 if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die('This file cannot be accessed directly.');
@@ -85,8 +87,8 @@ class UsersAPI extends RestAPI
     {
         $user = new UserModel();
 
-        $user->user_name = $this->body["user_name"];
-        $user->birth_year = $this->body["birth_year"];
+        $user->first_name = $this->body["first_name"];
+        $user->last_name = $this->body["last_name"];
 
         $success = UsersService::saveUser($user);
 
@@ -135,3 +137,4 @@ class UsersAPI extends RestAPI
             $this->error();
         }
     }
+}
