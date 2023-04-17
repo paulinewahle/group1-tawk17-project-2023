@@ -23,7 +23,7 @@ else{ // If URL path is not API, respond with "not found"
     die("Page not found");
 }
 
-// Implement API  OpenWeatherMap
+//Implement API  OpenWeatherMap
 if (isset($_POST["submit"])) {
     if (empty($_POST["city"])) {
         echo "Enter your City";
