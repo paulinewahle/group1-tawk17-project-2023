@@ -11,4 +11,6 @@ class UserModel{
     public $user_id;
     public $username;
     public $password;
+    public $location;
+    public $premium;
 }

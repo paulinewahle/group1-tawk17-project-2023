@@ -88,6 +88,8 @@ class UsersAPI extends RestAPI
 
         $user->username = $this->body["username"];
         $user->password = $this->body["password"];
+        $user->location = $this->body["location"];
+        $user->premium = $this->body["premium"];
 
         $success = UsersService::saveUser($user);
 
@@ -107,6 +109,8 @@ class UsersAPI extends RestAPI
 
         $user->username = $this->body["username"];
         $user->password = $this->body["password"];
+        $user->location = $this->body["location"];
+        $user->premium = $this->body["premium"];
 
         $success = UsersService::updateUserById($id, $user);
 
