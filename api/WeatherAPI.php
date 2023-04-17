@@ -4,7 +4,7 @@ require_once __DIR__ . "/UsersAPI.php";
 require_once __DIR__ . "/APIRouter.php";
 
 //Premium User Get Weather Data
-if ($user->isPremium()) {
+if ($user->isPremium()) { //unbefined variable
     if (isset($_POST["submit"])) {
         if (empty($_POST["city"])) {
             echo "Enter your City";
