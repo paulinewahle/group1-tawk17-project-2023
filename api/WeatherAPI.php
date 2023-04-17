@@ -17,11 +17,12 @@ if ($user->isPremium()) {
             $celcius = $weather["main"]["temp"] - 273;
         }
     }
-      $user->updateProfile($username, $password, $location, $is_premium);
-    }
+    $user->updateProfile($username, $password, $location, $premium);
+    
+}
 
-    // Normal User Get Weather Data
-   else {
+// Normal User Get Weather Data
+else {
     if (isset($_POST["submit"])) {
         if (empty($_POST["city"])) {
             echo "Enter your City";
@@ -34,4 +35,8 @@ if ($user->isPremium()) {
             $celcius = $weather["main"]["temp"] - 273;
         }
     }
-  }
+}
+  
+
+
+?>
