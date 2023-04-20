@@ -1,7 +1,4 @@
 <?php
-
-// Model class for users-table in database
-
 class UserModel
 {
   public $user_id;
