@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__."/WeatherAPI.php";
-require_once __DIR__."/WeatherPage.php";
+
 
 
 ?>

@@ -9,6 +9,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 // Data access:
 // Class for connecting to database
 
+
 class Database
 {
     private $host = "localhost";
