@@ -14,25 +14,21 @@ class Template
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title><?= $title ?>Weather App</title>
-
+            <title><?= $title ?>Home</title>
             <link rel="stylesheet" href="<?= $home_path ?>/assets/css/style.css">
-
             <script src="<?= $home_path ?>/assets/js/script.js"></script>
         </head>
 
         <body>
-            <header style="background-image: url('<?= $home_path ?>/assets/img/header-bg.jpg')">
                 <h1><?= $title; ?></h1>
             </header>
 
             <nav>
-                <a href="<?= $home_path ?>">Weather Today</a>
-                <a href="<?= $home_path ?>/articles">Weather Previous 7 Days</a>
+                <a href="<?= $home_path ?>">Weather</a>
+                <a href="<?= $home_path ?>/userPage">Profile</a>
 
                 <?php if ($user) : ?>
                     <a href="<?= $home_path ?>/auth/profile">Profile</a>
-                    <a href="<?= $home_path ?>/purchases">Purchases</a>
                 <?php else : ?>
                     <a href="<?= $home_path ?>/auth/login">Log in</a>
                 <?php endif; ?>
@@ -55,7 +51,7 @@ class Template
             ?>
             </main>
             <footer>
-                Copyright 2025
+                Copyright NMD 2023
             </footer>
         </body>
 

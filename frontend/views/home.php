@@ -1,17 +1,17 @@
 <?php
-require_once __DIR__ . "/../Template.php";
+require_once __DIR__ . "../Template.php";
+require_once __DIR__ . "/../../../WeatherAPI.php";
 
 Template::header("Home");
 ?>
 
 <head>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../../assets/css/style.css">
     </head>
 <body>
     <section>
-    <h1>Broken Weather App</h1>
+    <h1>Weather App</h1>
     <form method="post">
-    <button class="edit-user-btn">Edit User</button>
     <input type = "text" name = "city" id = "">
     <input name = "submit" type = "submit" value = "Check Weather">
     </form>
