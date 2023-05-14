@@ -6,12 +6,13 @@ Template::header("Home");
 
 <body>
     <section>
+    <h1>Broken Weather App</h1>
     <form method="post">
-    <h1>Weather App</h1>
     <button class="edit-user-btn">Edit User</button>
     <input type = "text" name = "city" id = "">
     <input name = "submit" type = "submit" value = "Check Weather">
-
+    </form>
+    </section>
 
     <div class="weather-container">
         
