@@ -4,6 +4,9 @@ require_once __DIR__ . "/../Template.php";
 Template::header("Home");
 ?>
 
+<head>
+        <link rel="stylesheet" href="style.css">
+    </head>
 <body>
     <section>
     <h1>Broken Weather App</h1>
