@@ -4,8 +4,10 @@
 if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die('This file cannot be accessed directly.');
 }
-require_once __DIR__ . "/UsersAPI.php";
-require_once __DIR__ . "/WeatherAPI.php";
+
+require_once __DIR__ . "/PurchasesAPI.php";
+require_once __DIR__ . "/AuthAPI.php";
+require_once __DIR__ . "/APIRoot.php";
 
 // Class for routing all our API requests
 
@@ -17,8 +19,14 @@ class APIRouter
 
     public function __construct($path_parts, $query_params)
     {
+        // Available routes
+        // Add to this if you need to add any route to the API
         $this->routes = [
-            "users" => "UsersAPI"
+            // Whenever someone calls "api/purchases" we 
+            // will load the PurchasesAPI class
+            "auth" => "AuthAPI",
+            "purchases" => "PurchasesAPI",
+            "root" => "APIRoot"
         ];
 
         $this->path_parts = $path_parts;
@@ -28,11 +36,20 @@ class APIRouter
     public function handleRequest()
     {
 
-        // Get the requested resource from the URL such as "Customers" or "Products"
-        $resource = strtolower($this->path_parts[1]);
-
-        // Cet the class specified in the routes
+        $resource = "root";
         $route_class = $this->routes[$resource];
+
+        // URL/api OR URL/api/12334
+        if (count($this->path_parts) >= 2 && $this->path_parts[1] != "") {
+            // Get the requested resource from the URL such as "Purchases" or "Users"
+            $resource = strtolower($this->path_parts[1]);
+        }
+
+        // Check if route from URL exists
+        if (isset($this->routes[$resource])) {
+            // Get the class specified in the routes
+            $route_class = $this->routes[$resource];
+        }
 
         // Create a new object from the resource class
         $route_object = new $route_class($this->path_parts, $this->query_params);
@@ -40,32 +57,4 @@ class APIRouter
         // Handle the request
         $route_object->handleRequest();
     }
-
-
-    //weather app
-    // $weather = "";
-    // $error = "";
-
-    // if ($_GET['city']) {
-
-    //  $urlContents = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".urlencode($_GET['city']).",uk&appid=4b6cbadba309b7554491c5dc66401886");
-
-    //     $weatherArray = json_decode($urlContents, true);
-
-    //     if ($weatherArray['cod'] == 200) {
-
-    //         $weather = "The weather in ".$_GET['city']." is currently '".$weatherArray['weather'][0]['description']."'. ";
-
-    //         $tempInCelcius = intval($weatherArray['main']['temp'] - 273);
-
-    //         $weather .= " Temperature: ".$tempInCelcius."&deg;C"."Wind speed".$weatherArray['wind']['speed']."m/s.";
-
-    //     } else {
-
-    //         $error = "Could not find city - please try again.";
-
-    //     }
-
-    // }
-
 }
