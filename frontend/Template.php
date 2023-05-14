@@ -14,7 +14,7 @@ class Template
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title><?= $title ?> - Multitier Shop</title>
+            <title><?= $title ?>Weather App</title>
 
             <link rel="stylesheet" href="<?= $home_path ?>/assets/css/style.css">
 
@@ -27,8 +27,8 @@ class Template
             </header>
 
             <nav>
-                <a href="<?= $home_path ?>">Start</a>
-                <a href="<?= $home_path ?>/articles">Articles</a>
+                <a href="<?= $home_path ?>">Weather Today</a>
+                <a href="<?= $home_path ?>/articles">Weather Previous 7 Days</a>
 
                 <?php if ($user) : ?>
                     <a href="<?= $home_path ?>/auth/profile">Profile</a>
