@@ -20,15 +20,15 @@ Template::header("Home");
     <div class="weather-container">
         
         <div class="location">
-        <!-- <h2> <?= $city ?></h2> -->
+        <h2> <?= $city ?></h2>
         </div>
         <br>
         <div class="weatherdescription">
-        <!-- <h2> <?= $weather["weather"][0]["description"] ?></h2> -->
+        <h2> <?= $weather["weather"][0]["description"] ?></h2>
         </div>
         <br>
         <div class="temperature">
-        <!-- <h2> <?= $celcius?> °C </h2> -->
+        <h2> <?= $celcius?> °C </h2>
         </div>
         <div class="weather-icon">
             <img src="weatherIcons/day/176.png" alt="Weather Icon">
