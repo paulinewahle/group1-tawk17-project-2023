@@ -27,7 +27,7 @@ class WeatherAPI extends RestAPI
         else {
             $this->notFound();
         }
-    }
+    } 
 
     private function checkById($id) {
         $user = UsersService::getUserById($id); 
@@ -44,7 +44,7 @@ class WeatherAPI extends RestAPI
                     $celcius = $weather["main"]["temp"] - 273;
                 }
             }
-            //$user->updateProfile($username, $password, $location, $premium);
+            $user->updateProfile($username, $password, $location, $premium);
         }
         
         // Normal User Get Weather Data
