@@ -8,13 +8,13 @@ Template::header("Profile");
     Logged in as <b><?= $this->user->username ?></b>
 </p>
 
-<?php if ($this->user->user_role === "admin") : ?>
-    <p>(admin user)</p>
+<?php if ($this->user->premium === 0) : ?>
+    <button>Upgrade To Premium</button>
 <?php endif; ?>
 
-<hr>
+<!-- <hr> -->
 
-<h2>Set profile picture</h2>
+<!-- <h2>Set profile picture</h2>
 
 <?php if ($this->user->profile_pic_url) : ?>
     <img src="<?= $this->home . $this->user->profile_pic_url?>" alt="" width="100">
@@ -24,9 +24,9 @@ Template::header("Profile");
 <form action="<?= $this->home ?>/auth/profile_pic" method="post" enctype="multipart/form-data">
     <input type="file" name="profile_pic"> <br>
     <input type="submit" value="Save" class="btn">
-</form>
+</form> -->
 
-<hr>
+<!-- <hr> -->
 
 
 <h2>Log out</h2>
