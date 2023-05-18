@@ -47,7 +47,7 @@ class UsersDatabase extends Database
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("sssb", $user->username, $user->password, $user->location, $user->premium);
+        $stmt->bind_param("sssi", $user->username, $user->password, $user->location, $user->premium);
 
         $success = $stmt->execute();
 
@@ -61,7 +61,7 @@ class UsersDatabase extends Database
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("sssbi", $user->username, $user->password, $user->location, $user->premium, $user_id);
+        $stmt->bind_param("sssii", $user->username, $user->password, $user->location, $user->premium, $user_id);
 
         $success = $stmt->execute();
 

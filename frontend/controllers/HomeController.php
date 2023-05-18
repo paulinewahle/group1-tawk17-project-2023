@@ -13,6 +13,7 @@ class HomeController extends ControllerBase
 
     public function handleRequest($request_info)
     {
+        $this->model = "hello";
         if ($request_info == "not_found") {
             $this->notFound();
         } else {

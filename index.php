@@ -14,7 +14,7 @@ $base_path = strtolower($path_parts[0]);
 
 
 // If the URL path starts with "api", load the API
-if($base_path == "api" && count($path_parts) > 1){
+if($base_path == "home" && count($path_parts) > 1){
     $query_params = $_GET;
     
  // Handle requests using the API router
@@ -23,7 +23,7 @@ if($base_path == "api" && count($path_parts) > 1){
 
 }
 
-else if($base_path == "home" && count($path_parts) > 1){
+else if($base_path == "api" && count($path_parts) > 1){
     $query_params = $_GET;
 
         //Handle request using API router
