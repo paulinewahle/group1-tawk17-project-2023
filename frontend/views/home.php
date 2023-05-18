@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . "../Template.php";
-require_once __DIR__ . "/../../../WeatherAPI.php";
+require_once __DIR__ . "/../Template.php";
+require_once __DIR__ . "/../../api/WeatherAPI.php";
 
 Template::header("Home");
 ?>
@@ -20,7 +20,7 @@ Template::header("Home");
     <div class="weather-container">
         
         <div class="location">
-        <h2> <?= $city ?></h2>
+        <h2> <?= $this->model ?></h2>
         </div>
         <br>
         <div class="weatherdescription">

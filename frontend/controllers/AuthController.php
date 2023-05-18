@@ -118,7 +118,7 @@ class AuthController extends ControllerBase
         $user = new UserModel();
 
         $user->username = $this->body["username"];
-        //$user->user_role = "user"; // hard code all new users to regular "user" role
+        $user->premium = 0; // hard code all new users to regular "user" role
         $password = $this->body["password"];
         $confirm_password = $this->body["confirm_password"];
 
@@ -127,7 +127,7 @@ class AuthController extends ControllerBase
             $this->viewPage("auth/register");
         }
 
-        //$existing_user = UsersService::getUserByUsername($user->username);
+        // $existing_user = UsersService::getUserByUsername($user->username);
 
         // if ($existing_user) {
         //     $this->model["error"] == "Username already in use";
@@ -143,6 +143,7 @@ class AuthController extends ControllerBase
             $this->viewPage("auth/register");
         }
     }
+
 
 
     private function logoutUser()
