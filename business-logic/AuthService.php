@@ -37,7 +37,6 @@ class AuthService
         return $success;
     }
     
-    
 
     public static function authenticateUser($username, $test_password)
     {
