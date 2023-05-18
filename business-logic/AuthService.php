@@ -36,7 +36,8 @@ class AuthService
 
         return $success;
     }
-
+    
+    
 
     public static function authenticateUser($username, $test_password)
     {
@@ -52,8 +53,8 @@ class AuthService
         // Compare $user->password_hash and $test_password using password_verify()
         $password_matches = password_verify($test_password, $user->password_hash);
 
-        if ($password_matches == false) {
-            return false;
+        if ($password_matches == true) {
+            return true;
         }
 
 

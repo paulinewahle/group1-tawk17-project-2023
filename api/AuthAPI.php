@@ -51,7 +51,7 @@ class AuthAPI extends RestAPI
         $user = new UserModel();
 
         $user->username = $this->body["username"];
-        $user->premium = "user"; // hard code all new users to regular "user" role
+        $user->premium = 0; // hard code all new users to regular "user" role
         $password = $this->body["password"];
 
         $success = AuthService::registerUser($user, $password);
