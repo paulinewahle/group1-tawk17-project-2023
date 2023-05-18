@@ -5,10 +5,6 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
     die('This file cannot be accessed directly.');
 }
 
-// Base class for all API classes to inherit from.
-// Includes functions for sending response as JSON
-// as well as parsing the request.
-
 class RestAPI
 {
 
@@ -26,8 +22,7 @@ class RestAPI
         $this->method = $_SERVER["REQUEST_METHOD"];
 
         // Count the number of "parts" in the path
-        // Example: "api/Customers" is 2 parts and
-        // "api/Customers/5" is 3 parts
+        // Example: "api/Customers" is 2 parts and "api/Customers/5" is 3 parts
         $this->path_count = count($this->path_parts);
 
         $this->parseBody();

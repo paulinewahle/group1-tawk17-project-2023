@@ -1,14 +1,17 @@
 <?php
-require_once __DIR__ . "/../Template.php";
+require_once __DIR__ . "../Template.php";
+require_once __DIR__ . "/../../../WeatherAPI.php";
 
 Template::header("Home");
 ?>
 
+<head>
+        <link rel="stylesheet" href="../../assets/css/style.css">
+    </head>
 <body>
     <section>
-    <h1>Broken Weather App</h1>
+    <h1>Weather App</h1>
     <form method="post">
-    <button class="edit-user-btn">Edit User</button>
     <input type = "text" name = "city" id = "">
     <input name = "submit" type = "submit" value = "Check Weather">
     </form>
@@ -17,15 +20,15 @@ Template::header("Home");
     <div class="weather-container">
         
         <div class="location">
-        <!-- <h2> <?= $city ?></h2> -->
+        <h2> <?= $city ?></h2>
         </div>
         <br>
         <div class="weatherdescription">
-        <!-- <h2> <?= $weather["weather"][0]["description"] ?></h2> -->
+        <h2> <?= $weather["weather"][0]["description"] ?></h2>
         </div>
         <br>
         <div class="temperature">
-        <!-- <h2> <?= $celcius?> °C </h2> -->
+        <h2> <?= $celcius?> °C </h2>
         </div>
         <div class="weather-icon">
             <img src="weatherIcons/day/176.png" alt="Weather Icon">
