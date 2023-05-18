@@ -179,7 +179,7 @@ class AuthController extends ControllerBase
             // You can now save the URL path to the database or use it in your application as needed
             $this->user->profile_pic_url = $url_path;
 
-            UsersService::updateUser($this->user->user_id, $this->user);
+            UsersService::updateUserById($this->user->user_id, $this->user);
 
             // Redirect to the profile page or display a success message
             $this->redirect($this->home . "/auth/profile");

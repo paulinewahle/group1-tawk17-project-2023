@@ -103,7 +103,7 @@ class UsersService{
 
     // Update the customer in the database by creating a database object 
     // from data-access layer and calling its update function.
-    public static function updateUsersById($user_id, UserModel $user){
+    public static function updateUserById($user_id, UserModel $user){
         $users_database = new UsersDatabase();
 
         // If you need to validate data or control what 

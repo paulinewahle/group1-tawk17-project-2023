@@ -75,4 +75,53 @@ class UsersDatabase extends Database
 
         return $success;
     }
+    public function getByUsername($username)
+    {
+        $user = $this->getByUsernameWithPassword($username);
+
+        // Never send the password hash unless needed for authentication
+        unset($user->password_hash);
+
+        // Return the UserModel object or null if no user was found
+        return $user;
+    }
+
+    // Get one user by using the inherited function getOneRowByIdFromTable
+    // Never send the password hash unless needed for authentication
+    public function getByUsernameWithPassword($username)
+    {
+        // Define SQL query to retrieve user data by username
+        $query = "SELECT * FROM users WHERE username = ?";
+
+        // Prepare the query statement
+        $stmt = $this->conn->prepare($query);
+
+        // Bind the username parameter to the prepared statement
+        $stmt->bind_param("s", $username);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Get the result of the query as a mysqli_result object
+        $result = $stmt->get_result();
+
+        // Fetch the user data as a UserModel object
+        $user = $result->fetch_object("UserModel");
+
+        // Return the UserModel object or null if no user was found
+        return $user;
+    }
+    // Update one by creating a query and using the inherited $this->conn 
+    public function updatePasswordById($user_id, $password_hash)
+    {
+        $query = "UPDATE users SET password_hash=? WHERE user_id=?;";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bind_param("si", $password_hash, $user_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
 }

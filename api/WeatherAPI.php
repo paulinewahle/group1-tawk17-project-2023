@@ -1,7 +1,5 @@
 <?php
-=======
-<!-- <?php
->>>>>>> Stashed changes
+
 require_once __DIR__ . "/RestAPI.php";
 require_once __DIR__ . "/UsersAPI.php";
 require_once __DIR__ . "/APIRouter.php";
