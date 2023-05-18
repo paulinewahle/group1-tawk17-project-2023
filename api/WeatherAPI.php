@@ -41,7 +41,7 @@ class WeatherAPI extends RestAPI
                     $celcius = $weather["main"]["temp"] - 273;
                 }
             }
-            // $user->updateProfile($username, $password, $location, $premium);
+          
         }
         
         // Normal User Get Weather Data
