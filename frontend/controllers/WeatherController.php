@@ -5,7 +5,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
     die('This file cannot be accessed directly.');
 }
 
-require_once __DIR__ . "/../.php";
+require_once __DIR__ . "/../WeatherAPI.php";
 
 class ArticleController extends ControllerBase
 {
