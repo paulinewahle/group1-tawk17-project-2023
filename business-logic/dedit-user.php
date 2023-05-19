@@ -22,7 +22,7 @@ class UserModel
 <body>
   <!-- Edit Profile Information -->
   <h1>Edit Profile</h1>
-  <form action="EditUSer.php" method="POST">
+  <form action="EditUser.php" method="POST">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required><br><br>
     <label for="password">Password:</label>
