@@ -38,7 +38,7 @@ Template::header("Home");
 <!-- <h2>Converted currencies</h2> -->
 <!-- <?php foreach ($this->model["converted_currencies"] as $currency => $price) : ?>
     <p><?= $currency ?>: <?= $price ?></p>
-    <?php endforeach; ?>
+<?php endforeach; ?>
 
 <form action="" method="get">
     <h2>Convert to</h2>
