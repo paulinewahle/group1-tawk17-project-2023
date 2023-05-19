@@ -46,7 +46,7 @@ class WeatherDataAccess
 
 
 
-// // Proceed with the API request if the city is not empty
+/ // Proceed with the API request if the city is not empty
 // if (!empty($city)) {
 // // API URL
 // $url = "https://api.openweathermap.org/data/2.5/weather?q=" . urlencode($city) . "&appid=" . $apiKey;
