@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../Template.php";
-require_once __DIR__ . "/../../api/WeatherAPI.php";
+// require_once __DIR__ . "/../../api/WeatherAPI.php";
 
 Template::header("Home");
 ?>
@@ -34,15 +34,11 @@ Template::header("Home");
         </div>
        
     </div>
-</body>
-
-<?php Template::footer(); ?>
-@@ -1,46 +0,0 @@
 
 <!-- <h2>Converted currencies</h2> -->
 <!-- <?php foreach ($this->model["converted_currencies"] as $currency => $price) : ?>
     <p><?= $currency ?>: <?= $price ?></p>
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
 <form action="" method="get">
     <h2>Convert to</h2>
@@ -57,3 +53,6 @@ Template::header("Home");
 
     <input type="submit" value="Convert">
 </form> -->
+
+<?php Template::footer(); ?>
+

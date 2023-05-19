@@ -13,6 +13,7 @@ class ArticleController extends ControllerBase
     public function handleRequest()
     {
         //$this->model["city"] = $city;
-       $this->viewPage("articles");
+        "weather" => ExchangeRateService::sekToUsd($purchase->price),
+       $this->viewPage("weather");
     }
 }

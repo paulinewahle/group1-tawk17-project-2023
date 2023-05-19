@@ -1,46 +1,78 @@
 <?php
 
-// Check for a defined constant or specific file inclusion
+require_once __DIR__ . "/RestAPI.php";
+require_once __DIR__ . "/UsersAPI.php";
+require_once __DIR__ . "/APIRouter.php";
+require_once __DIR__ . "/../business-logic/UsersService.php";
+
+
 if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die('This file cannot be accessed directly.');
 }
 
-// https://github.com/fawazahmed0/currency-api#readme
-class ExchangeRateFetcher {
-    private $base_url = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/";
+
+// Class for handling requests to "api/User"
+
+class WeatherAPI extends RestAPI
+{
+    // Handles the request by calling the appropriate member function
+    public function handleRequest()
+    {
+        if ($this->path_count == 3 && $this->method == "GET") {
+            $this->checkById($this->path_parts[2]);
+        }
+        else {
+            $this->notFound();
+        }
+    } 
+
+    if (isset($_POST["submit"])) {
+                   
+        echo "Enter your City";
     
-    // Fetches all available currencies from the API
-    function fetchCurrencies(){
-        // Construct the URL for the API request using the base URL
-        $url = $this->base_url . "currencies.json";
-      
-        // Fetch the data from the API using the constructed URL
-        $data = file_get_contents($url);
-      
-        // Decode the JSON data
-        // The "true" argument to json_decode returns an associative array instead of an object
-        $currencies = json_decode($data, true);
-      
-        // Return the currency codes to the caller
-        return $currencies;
+        $city = $_POST["city"];
+        $api_key = "a74c60a34f798eefa00278309f5c1b24";
+        $api = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$api_key";
+        $api_data = file_get_contents($api);
+        $weather = json_decode($api_data, true);
+        $celcius = $weather["main"]["temp"] - 273;
+                    
+    }
+    // private function checkById($id) {
+    //     $user = UsersService::getUserById($id); 
+    //     if ($user->isPremium) { 
+    //         if (isset($_POST["submit"])) {
+    //             if (empty($_POST["city"])) {
+    //                 echo "Enter your City";
+    //             }else{
+    //                 $city = $_POST["city"];
+    //                 $api_key = "a74c60a34f798eefa00278309f5c1b24";
+    //                 $api = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$api_key";
+    //                 $api_data = file_get_contents($api);
+    //                 $weather = json_decode($api_data, true);
+    //                 $celcius = $weather["main"]["temp"] - 273;
+    //             }
+    //         }
+          
+    //     }
+        
+    //     // Normal User Get Weather Data
+    //     else {
+    //         if (isset($_POST["submit"])) {
+    //             if (empty($_POST["city"])) {
+    //                 echo "Enter your City";
+    //             }else{
+    //                 $city = $_POST["city"];
+    //                 $api_key = "a74c60a34f798eefa00278309f5c1b24";
+    //                 $api = "api.openweathermap.org/data/2.5/forecast?weather?q=$city&appid=$api_key";
+    //                 $api_data = file_get_contents($api);
+    //                 $weather = json_decode($api_data, true);
+    //                 $celcius = $weather["main"]["temp"] - 273;
+    //             }
+    //         }
+    //     }
     }
 
-    // Fetches the exchange rate for the specified currency pair
-    function fetchExchangeRate($from_currency, $to_currency) {
+}
 
-        // Construct the URL for the API request using the base URL and currency codes
-        $url = "{$this->base_url}currencies/{$from_currency}/{$to_currency}.json";
-      
-        // Fetch the data from the API using the constructed URL
-        $data = file_get_contents($url);
-      
-        // Decode the JSON data and extract the exchange rate value
-        // The "true" argument to json_decode returns an associative array instead of an object
-        // The [$to_currency] index selects the property of the decoded data, which contains the exchange rate
-        $response = json_decode($data, true);
-        $exchange_rate = $response[$to_currency];
-      
-        // Return the exchange rate value to the caller
-        return $exchange_rate;
-      }
-  } 
+?> 
