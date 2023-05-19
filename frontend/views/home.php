@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../Template.php";
-// require_once __DIR__ . "/../../api/WeatherAPI.php";
+require_once __DIR__ . "/../../data-access/WeatherDataAccess.php";
 
 Template::header("Home");
 ?>
@@ -9,6 +9,13 @@ Template::header("Home");
         <link rel="stylesheet" href="../../assets/css/style.css">
     </head>
 <body>
+<h1>Weather</h1>
+    <form action="weather.php" method="GET">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+        <button type="submit">Get Weather</button>
+    </form>
+
     <section>
     <h1>Weather App</h1>
     <form method="post">
