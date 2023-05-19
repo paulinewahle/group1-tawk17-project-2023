@@ -19,7 +19,7 @@ Template::header("Home");
     <section>
     <h1>Weather App</h1>
     <form method="post">
-    <input type = "text" name = "city" id = "">
+    <input type = "text" placeholder="City Name" name = "city" id = "">
     <input name = "submit" type = "submit" value = "Check Weather">
     </form>
     </section>
