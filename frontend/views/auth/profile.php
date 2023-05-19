@@ -27,7 +27,7 @@ Template::header("Profile");
 
 <!-- <h2>Set profile picture</h2>
 
-<?php if ($this->user->profile_pic_url) : ?>
+ <?php if ($this->user->profile_pic_url) : ?>
     <img src="<?= $this->home . $this->user->profile_pic_url?>" alt="" width="100">
 <?php endif; ?> 
 
