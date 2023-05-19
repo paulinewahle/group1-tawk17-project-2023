@@ -17,8 +17,7 @@ Template::header("Home");
     </form>
     </section>
 
-    <div class="weather-container">
-        
+    <div class="weather-container"> 
         <div class="location">
         <h2> <?= $this->model ?></h2>
         </div>
@@ -40,4 +39,21 @@ Template::header("Home");
 <?php Template::footer(); ?>
 @@ -1,46 +0,0 @@
 
-<?php require_once __DIR__."../../../api/WeatherAPI.php"; ?>
+<!-- <h2>Converted currencies</h2> -->
+<!-- <?php foreach ($this->model["converted_currencies"] as $currency => $price) : ?>
+    <p><?= $currency ?>: <?= $price ?></p>
+<?php endforeach; ?>
+
+<form action="" method="get">
+    <h2>Convert to</h2>
+
+    <select name="to_currency">
+
+        <?php foreach ($this->model["available_currencies"] as $key => $currency) : ?>
+            <option value="<?= $key ?>"><?= $currency ?></option>
+        <?php endforeach; ?>
+
+    </select>
+
+    <input type="submit" value="Convert">
+</form> -->
