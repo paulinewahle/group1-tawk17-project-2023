@@ -14,7 +14,7 @@ Template::header("Profile");
 <?php endif; ?>
 
 <h2>Update Account</h2>
-<form action="<?= //$this->profile ?>/auth/update" method="post">
+<form action="<?= $this->profile ?> /auth/update" method="post">
     <input type="text" name="username" value=<?= $this->user->username?>> <br> 
     <input type="password" name="password" style="-webkit-text-security: dots;" value=<?= $this->user->password?>> <br>
     <input type="submit" value="Update" class="btn">

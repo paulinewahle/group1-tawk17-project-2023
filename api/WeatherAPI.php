@@ -11,56 +11,24 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 }
 
 
-// Class for handling requests to "api/User"
-
 class WeatherAPI extends RestAPI
 {
+    private $weatherService;
     // Handles the request by calling the appropriate member function
-    public function handleRequest()
-    {
-        if ($this->path_count == 3 && $this->method == "GET") {
-            $this->checkById($this->path_parts[2]);
+    public function __construct(WeatherService $weatherService)
+        {
+            $this->weatherService = $weatherService;
         }
-        else {
-            $this->notFound();
+    
+        public function getWeatherByCity($city)
+        {
+            // Call the WeatherService to retrieve weather data by city
+            $weatherData = $this->weatherService->getWeatherByCity($city);
+    
+            // Return the weather data as a JSON response
+            header('Content-Type: application/json');
+            echo json_encode($weatherData);
         }
     } 
 
-    private function checkById($id) {
-        $user = UsersService::getUserById($id); 
-        if ($user->isPremium) { 
-            if (isset($_POST["submit"])) {
-                if (empty($_POST["city"])) {
-                    echo "Enter your City";
-                }else{
-                    $city = $_POST["city"];
-                    $api_key = "a74c60a34f798eefa00278309f5c1b24";
-                    $api = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$api_key";
-                    $api_data = file_get_contents($api);
-                    $weather = json_decode($api_data, true);
-                    $celcius = $weather["main"]["temp"] - 273;
-                }
-            }
-          
-        }
-        
-        // Normal User Get Weather Data
-        else {
-            if (isset($_POST["submit"])) {
-                if (empty($_POST["city"])) {
-                    echo "Enter your City";
-                }else{
-                    $city = $_POST["city"];
-                    $api_key = "a74c60a34f798eefa00278309f5c1b24";
-                    $api = "api.openweathermap.org/data/2.5/forecast?weather?q=$city&appid=$api_key";
-                    $api_data = file_get_contents($api);
-                    $weather = json_decode($api_data, true);
-                    $celcius = $weather["main"]["temp"] - 273;
-                }
-            }
-        }
-    }
-
-}
-
-?> 
+   
