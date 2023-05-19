@@ -1,39 +1,22 @@
 <?php
-require_once __DIR__ . "/../../Template.php";
-
-Template::header($this->model->purchase_id);
+require_once __DIR__ . "/../../../frontend/controllers/WeatherController.php";
 ?>
 
-<h1><?= $this->model->purchase_id ?></h1>
-
-<p>
-    <b>Id: </b>
-    <?= $this->model->purchase_id ?>
-</p>
-
-<p>
-    <b>Product name: </b>
-    <?= $this->model->product_name ?>
-</p>
-
-<p>
-    <b>Price: </b>
-    <?= $this->model->price ?>
-</p>
-
-<p>
-    <b>Purchase time: </b>
-    <?= $this->model->purchase_time ?>
-</p>
-
-<?php if ($this->user->user_role === "admin") : ?>
-
-    <p>
-        <b>User ID: </b>
-        <?= $this->model->user_id ?>
-    </p>
-
-<?php endif; ?>
-
-
-<?php Template::footer(); ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Information</title>
+</head>
+<body>
+    <h1>Weather Information</h1>
+    <?php if (isset($errorMessage)): ?>
+        <p>Error: <?php echo $errorMessage; ?></p>
+    <?php else: ?>
+        <p>Temperature: <?php echo $temperature; ?> Celsius</p>
+        <p>Description: <?php echo $description; ?></p>
+        <?php if (isset($icon)): ?>
+            <img src="https://openweathermap.org/img/w/<?php echo $icon; ?>.png" alt="Weather Icon">
+        <?php endif; ?>
+    <?php endif; ?>
+</body>
+</html>
