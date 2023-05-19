@@ -106,7 +106,7 @@ class AuthController extends ControllerBase
             $this->model["error"] = "Invalid credentials";
             $this->viewPage("auth/login");
         }
-
+        
         $_SESSION["user"] = $user;
 
         $this->redirect($this->home . "/auth/profile");

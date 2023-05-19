@@ -127,7 +127,7 @@ class UsersAPI extends RestAPI
         if ($user == null) {
             $this->notFound();
         }
-
+        
         $success = UsersService::deleteUserById($id);
 
         if ($success) {

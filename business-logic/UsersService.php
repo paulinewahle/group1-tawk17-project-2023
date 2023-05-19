@@ -100,7 +100,7 @@ class UsersService{
 
         return $success;
     }
-
+    
     // Update the customer in the database by creating a database object 
     // from data-access layer and calling its update function.
     public static function updateUserById($user_id, UserModel $user){
