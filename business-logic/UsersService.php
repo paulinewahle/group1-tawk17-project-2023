@@ -1,12 +1,12 @@
 <?php
 //NEW
 
-// // Check for a defined constant or specific file inclusion
-// if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
-//     die('This file cannot be accessed directly.');
-// }
+// Check for a defined constant or specific file inclusion
+if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    die('This file cannot be accessed directly.');
+}
 
-// require_once __DIR__ . "/../data-access/UsersDatabase.php";
+require_once __DIR__ . "/../data-access/UsersDatabase.php";
 
 
 // class UsersService
@@ -49,8 +49,8 @@
 
 // }
 
-//OLD
-require_once __DIR__ . "/../data-access/UsersDatabase.php";
+// //OLD
+// require_once __DIR__ . "/../data-access/UsersDatabase.php";
 
 class UsersService{
 

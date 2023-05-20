@@ -12,7 +12,7 @@ require_once __DIR__ . "/functions.php";
 require_once __DIR__ . "/controllers/AuthController.php";
 require_once __DIR__ . "/controllers/HomeController.php";
 require_once __DIR__ . "/controllers/AssetsController.php";
-require_once __DIR__ . "/controllers/WeatherController.php";
+// require_once __DIR__ . "/controllers/WeatherController.php";
 
 // Class for routing all our API requests
 
@@ -33,7 +33,7 @@ class FrontendRouter
             "home" => "HomeController",
             "auth" => "AuthController",
             "purchases" => "PurchaseController",
-            "Weather" => "WeatherController",
+            "weather" => "WeatherController",
             "articles" => "ArticleController"
         ];
 
@@ -68,6 +68,8 @@ class FrontendRouter
 
         // Create a new object from the resource class
         $route_object = new $route_class($this->path_parts, $this->query_params);
+        // var_dump($route_object);
+
 
         // Handle the request
         $route_object->handleRequest($request_info);
