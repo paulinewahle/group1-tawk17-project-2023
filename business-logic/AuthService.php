@@ -12,7 +12,6 @@ require_once __DIR__ . "/../data-access/UsersDatabase.php";
 class AuthService
 {
 
-
     public static function registerUser(UserModel $user, $password)
     {
         $users_database = new UsersDatabase();
